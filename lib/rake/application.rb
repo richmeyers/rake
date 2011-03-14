@@ -144,13 +144,8 @@ module Rake
     def display_error_message(ex)
       $stderr.puts "#{name} aborted!"
       $stderr.puts ex.message
-      if options.trace
-        $stderr.puts ex.backtrace.join("\n")
-      else
-        $stderr.puts rakefile_location(ex.backtrace)
-      end
+      $stderr.puts ex.backtrace.join("\n")
       $stderr.puts "Tasks: #{ex.chain}" if has_chain?(ex)
-      $stderr.puts "(See full trace by running task with --trace)" unless options.trace
     end
 
     # Warn about deprecated usage.
